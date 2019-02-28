@@ -124,15 +124,48 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
+
+
+
 function uniq (arr, callback){
-  var newArray = [];
-    for (var i = 0; i < arr.length; i++){
-      if (!newArray.includes(arr[i])){
-        newArray.push(arr[i])
-      };
-    };
-    return callback(newArray);
+  for (var i = 0; i < arr.length; i++){
+    for(let j = i+1; j< arr.length;j++){
+      if (arr[i] === arr[j]){
+        arr.splice(j,1)
+        j--
+      }
+    }
   };
+  return callback(arr);
+}
+
+
+
+// function uniq (arr, callback){
+//   let newArray = [];
+//     for (var i = 0; i < arr.length; i++){
+//       if (!newArray.includes(arr[i])){
+//         newArray.push(arr[i])
+//       };
+//     };
+//     return callback(newArray);
+//   };
+
+
+
+// function uniq (arr, callback){
+//   let newArray = []
+//   for (var i = 0; i < arr.length; i++){
+//     for (let j = 0; j< newArray.length;j++){
+//       if (arr[i] !== newArray[j]){
+//         newArray.push(arr[i])
+//         i--
+//       }
+//     }
+//   };
+//   return callback(newArray);
+// }
+
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
